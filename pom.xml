@@ -6,9 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 	<groupId>com.terry</groupId>
 	<artifactId>DevOpsCenter</artifactId>
-    <!-- 
-	<packaging>war</packaging>
-     -->
+    <packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>DevOpsCenter Maven Webapp</name>
 	<url>http://maven.apache.org</url>
@@ -18,17 +16,40 @@
          <artifactId>spring-boot-starter-parent</artifactId>
          <version>1.2.4.RELEASE</version>
      </parent>
+     
+     <properties>
+        <main.basedir>${basedir}/../..</main.basedir>
+        <java.version>1.7</java.version>
+        <m2eclipse.wtp.contextRoot>/</m2eclipse.wtp.contextRoot>
+    </properties>
+    
     <dependencies>
 	    <dependency>
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-starter-web</artifactId>
             <version>1.2.4.RELEASE</version>
 	    </dependency>
+        
         <!-- Adds production ready features such as metrics and monitoring. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
             <version>1.2.4.RELEASE</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
         </dependency>
 	</dependencies>
 
@@ -42,11 +63,9 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <useSystemClassLoader>false</useSystemClassLoader>
                 </configuration>
             </plugin>
         </plugins>
