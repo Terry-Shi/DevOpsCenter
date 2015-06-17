@@ -6,6 +6,8 @@
 		</title>
 	</head>
 	<body>
-		Health Check Index Page
+		Health Check Index Page 
+		${user.email} 
+		${email}
 	</body>
 </html>

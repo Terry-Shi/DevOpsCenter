@@ -1,68 +1,50 @@
 package com.terry.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
+@Entity
 public class User {
 
-	private Long id;
+    @Id
+    @Column(name = "id", nullable = false, updatable = false)
+    @NotNull
+    @Size(max = 64)
+    private String id;
 
-	private Integer version;
+    @Column(name = "password", nullable = false)
+    @NotNull
+    @Size(max = 64)
+    private String password;
 
-	private String email;
+    public User() {
+    }
 
-	private boolean deleted = false;
+    public User(final String id, final String password) {
+        this.id = id;
+        this.password = password;
+    }
+    
+    public String getId() {
+        return id;
+    }
 
-	private String password;
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	private String role;
+    public String getPassword() {
+        return password;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Integer getVersion() {
-		return version;
-	}
-
-	public void setVersion(Integer version) {
-		this.version = version;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public boolean isDeleted() {
-		return deleted;
-	}
-
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
 
 //	@Override
 //	public Map<String, String> validateEntity() {

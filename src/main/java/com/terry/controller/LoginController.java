@@ -22,16 +22,10 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String processLogin(User user, BindingResult result, HttpSession session) {
 
-		if ("USER".equalsIgnoreCase(user.getRole())) {
-			boolean isSuccess = true;//loginService.checkUser(user);
-			if(isSuccess){
-				session.setAttribute("user", user);
-				session.setAttribute("email", user.getEmail());
-			}else{
-				result.reject("login failed!");
-			}
-		}
-
+			
+		session.setAttribute("user", user.getId());
+		session.setAttribute("email", user.getPassword());
+	
 		if (result.hasErrors()) {
 			return "login";
 		} else {
