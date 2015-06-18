@@ -2,6 +2,8 @@ package com.terry.controller;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -24,6 +26,8 @@ import com.terry.validator.UserCreateFormPasswordValidator;
 @Controller
 public class UserCreateController {
     
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserCreateController.class);
+    
     @Autowired
     private UserService userService;
     @Autowired
@@ -42,6 +46,7 @@ public class UserCreateController {
     @RequestMapping(value = "/user_create", method = RequestMethod.POST)
     public String createUser(@ModelAttribute("form") @Valid UserCreateForm form, BindingResult result) {
         if (result.hasErrors()) {
+            LOGGER.info("User Form validate failed: " + result.toString());
             return "user_create";
         }
         try {
@@ -56,6 +61,7 @@ public class UserCreateController {
     @ExceptionHandler
     @ResponseStatus(HttpStatus.CONFLICT)
     public String handleUserAlreadyExistsException(UserAlreadyExistsException e) {
+        LOGGER.info("UserAlreadyExistsException ! " + e.toString());
         return e.getMessage();
     }
 }
