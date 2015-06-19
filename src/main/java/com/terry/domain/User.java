@@ -1,5 +1,7 @@
 package com.terry.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,7 +10,12 @@ import javax.validation.constraints.Size;
 
 
 @Entity
-public class User {
+public class User implements Serializable{
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -5752768374335639924L;
 
     @Id
     @Column(name = "id", nullable = false, updatable = false)
