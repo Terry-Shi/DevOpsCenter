@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableAutoConfiguration
 //@SpringBootApplication
 @ComponentScan
-public class Example {
+public class Application {
 
     private String message = "Hello World!!!";
     
@@ -38,7 +38,12 @@ public class Example {
 //    }
     
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(Example.class, args);
+        SpringApplication.run(Application.class, args);
+        
+//        SpringApplication app = new SpringApplication(Application.class);
+//        app.addListeners(…); // such as ApplicationStartedEvent
+//        app.setShowBanner(false);
+//        app.run(args);
     }
 
 }

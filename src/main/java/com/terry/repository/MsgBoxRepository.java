@@ -5,9 +5,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.terry.domain.MsgBox;
-import com.terry.domain.User;
 
-public interface MsgBoxRepository extends JpaRepository<User, String>{
+public interface MsgBoxRepository extends JpaRepository<MsgBox, String>{
 
     /**
      * Returns the MsgBox with the given UserId.
