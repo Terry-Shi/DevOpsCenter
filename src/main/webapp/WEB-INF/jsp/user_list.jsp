@@ -13,6 +13,6 @@
     </c:forEach>
     </ul>
 
-    <a href="<spring:url value="/user_create" />"><spring:message code="user.create" /></a>
+    <a href="<spring:url value="/user_create" />"><spring:message code="msg.create" /></a>
 </body>
 </html>

@@ -19,9 +19,12 @@ public class LoginController {
 //	@Autowired
 //	private LoginService loginService;
 
-	@RequestMapping(method = RequestMethod.POST)
-	public String processLogin(User user, BindingResult result, HttpSession session) {
+    // http://www.java-allandsundry.com/2014/04/using-http-session-with-spring-based.html
+    @Autowired
+    private HttpSession httpSession; 
 
+    @RequestMapping(method = RequestMethod.POST)
+	public String processLogin(User user, BindingResult result, HttpSession session) {
 			
 		session.setAttribute("user", user.getId());
 		session.setAttribute("email", user.getPassword());
@@ -29,6 +32,7 @@ public class LoginController {
 		if (result.hasErrors()) {
 			return "login";
 		} else {
+		    httpSession.setAttribute("USER", httpSession);
 			return "redirect:index";
 		}
 	}

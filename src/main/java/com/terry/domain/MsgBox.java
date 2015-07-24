@@ -40,7 +40,19 @@ public class MsgBox {
     @Column(name = "status")
     private String status; // sent, read 
     
+    public MsgBox(){
+        
+    }
     
+    public MsgBox(String fromUser, String toUser, String msg, Date createTime,
+            String status) {
+        this.fromUser = fromUser;
+        this.toUser = toUser;
+        this.msg = msg;
+        this.createTime = createTime;
+        this.status = status;
+    }
+
     /**
      * @return the id
      */
@@ -96,4 +108,35 @@ public class MsgBox {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+    /**
+     * @return the createTime
+     */
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    /**
+     * @param createTime the createTime to set
+     */
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    /**
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
+    
+    
 }
