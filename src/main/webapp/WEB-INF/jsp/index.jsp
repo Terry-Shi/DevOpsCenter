@@ -7,7 +7,9 @@
 	</head>
 	<body>
 		Health Check Index Page 
-		${user.email} 
-		${email}
+		
+		${USER.id} 
+		${USER.password}
+		
 	</body>
 </html>

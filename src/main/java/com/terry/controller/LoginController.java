@@ -32,8 +32,8 @@ public class LoginController {
 		if (result.hasErrors()) {
 			return "login";
 		} else {
-		    httpSession.setAttribute("USER", httpSession);
-			return "redirect:index";
+		    httpSession.setAttribute("USER", user);
+			return "index";
 		}
 	}
 	

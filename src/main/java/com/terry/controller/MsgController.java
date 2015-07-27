@@ -45,7 +45,7 @@ public class MsgController {
 
     @RequestMapping(value = "/init", method = RequestMethod.GET)
     public ModelAndView getCreateUserView() {
-        return new ModelAndView("msg_create", "form", new MsgBox());
+        return new ModelAndView("msg_sender", "form", new MsgBox());
     }
     
     @RequestMapping(value = "/sender", method = RequestMethod.POST)
