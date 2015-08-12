@@ -11,6 +11,7 @@
 	<name>DevOpsCenter Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
+     <!-- parent specifies the version for the starter dependency -->
      <parent>
          <groupId>org.springframework.boot</groupId>
          <artifactId>spring-boot-starter-parent</artifactId>
@@ -24,6 +25,8 @@
     </properties>
     
     <dependencies>
+    
+        <!-- Spring MVC -->
 	    <dependency>
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-starter-web</artifactId>
