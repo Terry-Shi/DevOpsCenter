@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.terry.domain.User;
 
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/users") //提供路由信息
 public class MyRestController {
     
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)

@@ -8,29 +8,27 @@
 	<artifactId>DevOpsCenter</artifactId>
     <packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>DevOpsCenter Maven Webapp</name>
-	<url>http://maven.apache.org</url>
+	<name>DevOpsCenter Webapp</name>
 
-     <!-- parent specifies the version for the starter dependency -->
+     <!-- parent specifies the version for the starter dependency,从父依赖中继承默认设置 -->
      <parent>
          <groupId>org.springframework.boot</groupId>
          <artifactId>spring-boot-starter-parent</artifactId>
-         <version>1.2.4.RELEASE</version>
+         <version>1.3.1.RELEASE</version>
      </parent>
      
      <properties>
         <main.basedir>${basedir}/../..</main.basedir>
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
         <m2eclipse.wtp.contextRoot>/</m2eclipse.wtp.contextRoot>
     </properties>
     
     <dependencies>
-    
         <!-- Spring MVC -->
 	    <dependency>
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-starter-web</artifactId>
-            <version>1.2.4.RELEASE</version>
+            <version>1.3.1.RELEASE</version>
 	    </dependency>
         
         <!-- Adds production ready features such as metrics and monitoring. -->
@@ -38,7 +36,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>1.2.4.RELEASE</version>
+            <version>1.3.1.RELEASE</version>
         </dependency>
         
         <!-- Spring JPA -->
@@ -67,7 +65,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.187</version>
+            <version>1.4.190</version>
         </dependency>
 	</dependencies>
 

@@ -6,11 +6,12 @@ import org.springframework.context.annotation.ComponentScan;
 
 
 /**
- * http://kielczewski.eu/2014/04/spring-boot-mvc-application/
+ * 启动入口类
+ * 参考例子 http://kielczewski.eu/2014/04/spring-boot-mvc-application/
  *
  */
 @EnableAutoConfiguration
-//@SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan
+//@SpringBootApplication // 包含三个annotation加起来的效果  @Configuration @EnableAutoConfiguration @ComponentScan
 @ComponentScan
 public class Application {
 
