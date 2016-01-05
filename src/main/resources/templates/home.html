@@ -2,11 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>Spring Boot Contacts</title>
+    <!-- link tag has two href attributes? The first one in normal HTML will be used by the browser when the template is read from the file system. The second with the ‘th’ namespace is used by Thymeleaf when the template is rendered via Spring Boot. -->
     <link rel="stylesheet" href="../public/style.css" th:href="@{/style.css}" />
   </head>
 
   <body>
     <h2>Spring Boot Contacts (V8-add HTML5 element)</h2>
+    <img src="../static/images/FBcover1200x628.png" width="500"
+             th:src="@{images/FBcover1200x628.png}"/>
     <form method="POST">
       <label for="firstName">First Name:</label>
       <input type="text" name="firstName"></input><br/>
@@ -21,7 +24,7 @@
       <input type="email" name="emailAddress" placeholder="your@email" />  
       <input type="submit"></input>
     </form>
-<!-- 
+
     <ul th:each="contact : ${contacts}">
       <li>
         <span th:text="${contact.firstName}">First</span>
@@ -30,6 +33,6 @@
         <span th:text="${contact.emailAddress}">emailAddress</span>
       </li>
     </ul>
--->    
+   
   </body>
 </html>
