@@ -72,7 +72,7 @@ public class SimpleController {
     //binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
   }
 
-  @RequestMapping(value = "/", method = RequestMethod.GET)
+  @RequestMapping(method = RequestMethod.GET)
   public String index(SimpleForm form, Model model) {
     model.addAttribute("selectItems", SELECT_ITEMS);
     model.addAttribute("checkItems", CHECK_ITEMS);
