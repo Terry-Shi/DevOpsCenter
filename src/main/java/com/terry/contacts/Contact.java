@@ -46,4 +46,15 @@ public class Contact {
   public String getEmailAddress() {
     return emailAddress;
   }
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
+@Override
+public String toString() {
+    return "Contact [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName
+            + ", phoneNumber=" + phoneNumber + ", emailAddress=" + emailAddress + "]";
+}
+  
+  
 }

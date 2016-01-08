@@ -19,7 +19,7 @@ public class WordsController {
 //	}
 
 	@RequestMapping(method=RequestMethod.GET)
-	public String home(Map<String, Object> model) {
+	public String init(Map<String, Object> model) {
 	    Words words = new Words();
 	    words.setInputtext("my input text");
 	    words.setResult("my result");

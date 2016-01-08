@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Spring Boot Contacts</title>
+    <title>Request Param</title>
     <!-- link tag has two href attributes? The first one in normal HTML will be used by the browser when the template is read from the file system. The second with the ‘th’ namespace is used by Thymeleaf when the template is rendered via Spring Boot. -->
     <link rel="stylesheet" href="../public/style.css" th:href="@{/style.css}" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -10,11 +10,9 @@
   <body>
     <h2>词法类API</h2>
    
-    <form method="POST" th:action="@{/words}" th:object="${words}">
-      <textarea name="inputtext" id="inputtext" rows="5" cols="50" th:field="*{inputtext}"></textarea>
-      <textarea name="inputtext2" id="inputtext2" rows="5" cols="50" th:field="${words.inputtext}"></textarea>
-      <td th:if="${#fields.hasErrors('inputtext')}" th:errors="*{inputtext}">Inputtext error message</td>
-      <textarea name="result" rows="5" cols="50" th:field="*{result}"> </textarea>
+    <form method="POST" th:action="@{/requestparam}" >
+      <input type="text" name="firstName" id="firstName"  th:value="${firstName}"> </input>
+      <input type="text" name="lastName" id="lastName"  th:value="${lastName}"> </input>
       <input type="submit"></input>
     </form>
    
