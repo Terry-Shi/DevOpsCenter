@@ -66,7 +66,7 @@ public class RequestParamController {
     
     
     //***************************************************************
-    //               Controller -> web page
+    //               Controller -> client
     //***************************************************************
 	@RequestMapping(method=RequestMethod.POST)
 	public String submit(@RequestParam("firstName") String inputtext, 
@@ -126,7 +126,7 @@ public class RequestParamController {
 	
 	
     //***************************************************************
-    //               web page -> Controller; data convert
+    //               web page -> Controller; data format convert
     //***************************************************************
 	
 	
