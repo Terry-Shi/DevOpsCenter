@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,7 +23,7 @@ import com.terry.contacts.Contact;
 public class RequestParamController {
 
     //***************************************************************
-    //               Controller -> web page
+    //               Server -> Client
     //***************************************************************
 //	@RequestMapping(method=RequestMethod.GET)
 //	public String home(Map<String,Object> model) {
@@ -66,12 +67,13 @@ public class RequestParamController {
     
     
     //***************************************************************
-    //               Controller -> client
+    //               Client -> Server
     //***************************************************************
 	@RequestMapping(method=RequestMethod.POST)
-	public String submit(@RequestParam("firstName") String inputtext, 
+	public String submit(
+	        @RequestParam("firstName") String inputtext, 
 	        @RequestParam("lastName") String result) {
-	    System.out.println(" ****** bind to Variable ****** ");
+	    System.out.println(" ****** Bind to Variable by @RequestParam - OK ****** ");
 	    System.out.println(inputtext);
 	    System.out.println(result);
 		return "RequestParam"; 
@@ -79,33 +81,40 @@ public class RequestParamController {
 	
 //   @RequestMapping(method=RequestMethod.POST)
 //    public String submit(Contact contact) {
-//	    System.out.println(" ****** bind to POJO ****** " + contact);
+//	    System.out.println(" ****** Bind to POJO ****** - OK " + contact);
 //        System.out.println(contact.getFirstName());
 //        System.out.println(contact.getLastName());
 //        return "RequestParam";
 //    }
 
 //   @RequestMapping(method=RequestMethod.POST)
-//   public String submit(Map<String,Object> model) {
-//       System.out.println(" ****** bind to Map ****** " + model);
-//       System.out.println(model.get("firstName"));
-//       System.out.println(model.get("lastName"));
+//   public String submit(Map<String,Object> map) {
+//       System.out.println(" ****** Bind to Map ****** - NG " + map);
+//       System.out.println(map.get("firstName"));
+//       System.out.println(map.get("lastName"));
 //       return "RequestParam";
 //   }
    
-//  // Model
-//  @RequestMapping(method=RequestMethod.POST)
-//  public ModelAndView submit(Model model) {
-//      System.out.println(" ****** bind to ModelAndView ****** " + model);
-//      System.out.println(model.getAttribute("firstName")); // no getAttribute method for Model!
-//      System.out.println(model.getAttribute("lastName"));
-//      return "RequestParam";
-//  }
+    @RequestMapping(method = RequestMethod.POST)
+    public String submit(Model model) {
+        System.out.println(" ****** Bind to ModelAndView ******  - NG " + model.asMap());
+        System.out.println(model.asMap().get("firstName"));
+        System.out.println(model.asMap().get("lastName"));
+        return "RequestParam";
+    }
+	
+    @RequestMapping(method = RequestMethod.POST)
+    public String submit(ModelMap modelMap) {
+        System.out.println(" ****** Bind to ModelMap ******  - NG " + modelMap);
+        System.out.println(modelMap.get("firstName"));
+        System.out.println(modelMap.get("lastName"));
+        return "RequestParam";
+    }
 	
 //   // ModelAndView
 //   @RequestMapping(method=RequestMethod.POST)
 //   public ModelAndView submit(ModelAndView model) {
-//       System.out.println(" ****** bind to ModelAndView ****** " + model);
+//       System.out.println(" ****** Bind to ModelAndView ****** - NG " + model);
 //       System.out.println(model.getModel().get("firstName"));
 //       System.out.println(model.getModel().get("lastName"));
 //       model.setViewName("RequestParam");
@@ -114,7 +123,7 @@ public class RequestParamController {
    
 //   @RequestMapping(method=RequestMethod.POST)
 //   public String submit(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-//       System.out.println(" ****** bind to HttpServletRequest ****** ");
+//       System.out.println(" ****** Bind to HttpServletRequest ****** - OK");
 //       System.out.println(request.getParameter("firstName"));
 //       System.out.println(request.getParameter("lastName"));
 //       String firstName = WebUtils.findParameterValue(request, "firstName");
