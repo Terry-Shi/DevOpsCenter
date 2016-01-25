@@ -25,12 +25,12 @@ public class RequestParamController {
     //***************************************************************
     //               Server -> Client
     //***************************************************************
-//	@RequestMapping(method=RequestMethod.GET)
-//	public String home(Map<String,Object> model) {
-//	    model.put("firstName", "set param firstname");
-//	    model.put("lastName", "set param lastname");
-//		return "RequestParam";
-//	}
+	@RequestMapping(method=RequestMethod.GET)
+	public String home(Map<String,Object> model) {
+	    model.put("firstName", "set param firstname");
+	    model.put("lastName", "set param lastname");
+		return "RequestParam";
+	}
 	
 //    @RequestMapping(method=RequestMethod.GET)
 //    public String home(Model model) {
@@ -47,13 +47,13 @@ public class RequestParamController {
 //        return model;
 //    }
     
-    @RequestMapping(method = RequestMethod.GET)
-    public String home(@ModelAttribute("contact") Contact contact) {
-        System.out.println(contact);
-        contact.setFirstName("set param firstname in POJO");
-        contact.setLastName("set lastname in POJO");
-        return "RequestParam";
-    }
+//    @RequestMapping(method = RequestMethod.GET)
+//    public String home(@ModelAttribute("contact") Contact contact) {
+//        System.out.println(contact);
+//        contact.setFirstName("set param firstname in @ModelAttribute");
+//        contact.setLastName("set lastname in @ModelAttribute");
+//        return "RequestParam";
+//    }
 
 //    @RequestMapping(method = RequestMethod.GET)
 //    public ModelAndView home(ModelAndView model) {
@@ -95,21 +95,21 @@ public class RequestParamController {
 //       return "RequestParam";
 //   }
    
-    @RequestMapping(method = RequestMethod.POST)
-    public String submit(Model model) {
-        System.out.println(" ****** Bind to ModelAndView ******  - NG " + model.asMap());
-        System.out.println(model.asMap().get("firstName"));
-        System.out.println(model.asMap().get("lastName"));
-        return "RequestParam";
-    }
-	
-    @RequestMapping(method = RequestMethod.POST)
-    public String submit(ModelMap modelMap) {
-        System.out.println(" ****** Bind to ModelMap ******  - NG " + modelMap);
-        System.out.println(modelMap.get("firstName"));
-        System.out.println(modelMap.get("lastName"));
-        return "RequestParam";
-    }
+//    @RequestMapping(method = RequestMethod.POST)
+//    public String submit(Model model) {
+//        System.out.println(" ****** Bind to ModelAndView ******  - NG " + model.asMap());
+//        System.out.println(model.asMap().get("firstName"));
+//        System.out.println(model.asMap().get("lastName"));
+//        return "RequestParam";
+//    }
+//	
+//    @RequestMapping(method = RequestMethod.POST)
+//    public String submit(ModelMap modelMap) {
+//        System.out.println(" ****** Bind to ModelMap ******  - NG " + modelMap);
+//        System.out.println(modelMap.get("firstName"));
+//        System.out.println(modelMap.get("lastName"));
+//        return "RequestParam";
+//    }
 	
 //   // ModelAndView
 //   @RequestMapping(method=RequestMethod.POST)

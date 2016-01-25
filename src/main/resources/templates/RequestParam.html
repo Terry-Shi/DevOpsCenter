@@ -11,7 +11,7 @@
     <h2>词法类API</h2>
    
     <form method="POST" th:action="@{/requestparam1}" >
-      <input type="text" name="firstName" id="firstName"  th:value="${firstName}"> </input>
+      <input type="text" name="firstName" id="firstName"  th:value="*{firstName}"> </input>
       <input type="text" name="lastName" id="lastName"  th:value="${lastName}"> </input>
       <input type="submit"></input>
     </form>
