@@ -42,7 +42,7 @@ public class ApplicationTests {
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
     }
     
-    @Test
+    //@Test
     public void testFormBindingWithGet(){
         String url = "http://localhost:9000/requestparam";
         
@@ -65,6 +65,6 @@ public class ApplicationTests {
         //requestHeaders.setContentType(MediaType.MULTIPART_FORM_DATA);
         HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(mvm, requestHeaders);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, requestEntity, String.class);
-        System.out.println(response.getBody());
+        //System.out.println(response.getBody());
     }
 }

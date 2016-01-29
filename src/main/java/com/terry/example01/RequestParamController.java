@@ -10,12 +10,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
+import com.hp.it.email.domain.EMailInput;
 import com.terry.contacts.Contact;
 
 @Controller
@@ -70,14 +73,28 @@ public class RequestParamController {
     //               Client -> Server
     //***************************************************************
 	@RequestMapping(method=RequestMethod.POST)
-	public String submit(
-	        @RequestParam("firstName") String inputtext, 
-	        @RequestParam("lastName") String result) {
-	    System.out.println(" ****** Bind to Variable by @RequestParam - OK ****** ");
-	    System.out.println(inputtext);
-	    System.out.println(result);
-		return "RequestParam"; 
-	}
+    public String submit(
+            @RequestBody String req 
+            ) {
+        System.out.println(" ****** Bind to Variable by @RequestBody - OK ****** ");
+        System.out.println(req);
+        // 如果form中有两个数据
+        //        mvm.add("firstName", "firstName from UT code");
+        //        mvm.add("lastName", "lastName from UT code");
+        // 输出将会是
+        // firstName=firstName+from+UT+code&lastName=lastName+from+UT+code
+        return "RequestParam"; 
+    }
+	
+//	@RequestMapping(method=RequestMethod.POST)
+//	public String submit(
+//	        @RequestParam("firstName") String firstName, 
+//	        @RequestParam("lastName") String lastName) {
+//	    System.out.println(" ****** Bind to Variable by @RequestParam - OK ****** ");
+//	    System.out.println(firstName);
+//	    System.out.println(lastName);
+//		return "RequestParam"; 
+//	}
 	
 //   @RequestMapping(method=RequestMethod.POST)
 //    public String submit(Contact contact) {
@@ -133,6 +150,14 @@ public class RequestParamController {
 //       return "redirect:/requestparam";
 //   }
 	
+	
+	//**********************Restful*********************************
+    @RequestMapping(value = "restful", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
+    public @ResponseBody
+    Map<String, String> submitMail(@RequestBody Contact contact) {
+        
+        
+    }
 	
     //***************************************************************
     //               web page -> Controller; data format convert
