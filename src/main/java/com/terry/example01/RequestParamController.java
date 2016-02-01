@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
-import com.hp.it.email.domain.EMailInput;
 import com.terry.contacts.Contact;
 
 @Controller
@@ -153,10 +152,11 @@ public class RequestParamController {
 	
 	//**********************Restful*********************************
     @RequestMapping(value = "restful", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
-    public @ResponseBody
-    Map<String, String> submitMail(@RequestBody Contact contact) {
-        
-        
+    public @ResponseBody Contact restFulPost(@RequestBody Contact contact) {
+        System.out.println("************* restFulPost ***********");
+        System.out.println(contact);
+        contact.setEmailAddress("a@b.com");
+        return contact;
     }
 	
     //***************************************************************

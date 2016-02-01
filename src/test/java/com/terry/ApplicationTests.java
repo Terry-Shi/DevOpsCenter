@@ -10,6 +10,7 @@ import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -21,6 +22,8 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
+
+import com.terry.contacts.Contact;
 
 /**
  * Ref: http://www.jianshu.com/p/972cd6b93206
@@ -53,7 +56,7 @@ public class ApplicationTests {
 //        mockMvc.perform(MockMvcRequestBuilders.get("")).andReturn(MvcResult) //.andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().string(expectedContent))
     }
     
-    @Test
+    //@Test
     public void testFormBindingWithPost(){
         String url = "http://localhost:9000/requestparam";
         
@@ -66,5 +69,21 @@ public class ApplicationTests {
         HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(mvm, requestHeaders);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, requestEntity, String.class);
         //System.out.println(response.getBody());
+    }
+    
+    @Test
+    public void testRestfulPost(){
+        String url = "http://localhost:9000/requestparam/restful";
+        
+        Contact contact = new Contact();
+        contact.setFirstName("firstName in JSON");
+        contact.setLastName("lastName in JSON");
+        
+        HttpHeaders requestHeaders = new HttpHeaders();
+        requestHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        HttpEntity<Contact> requestEntity = new HttpEntity<Contact>(contact, requestHeaders); // HttpEntity的类型Contact 对应HTTP Body
+      
+        ResponseEntity<Contact> response = restTemplate.exchange(url, HttpMethod.POST, requestEntity, Contact.class);
+        System.out.println("HttpResponse: " + response.getBody());
     }
 }
