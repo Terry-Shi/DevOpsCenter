@@ -154,8 +154,11 @@ public class RequestParamController {
 	//in order to produce a JSON response with UTF-8 encoding, "application/json; charset=UTF-8" should be used.
 	// TODO: "produces" 是否同时限制了Request的类型，也限定了Response的类型？
     @RequestMapping(value = "restful", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
-    public @ResponseBody Contact restFulPost(@RequestBody Contact contact) {
-        System.out.println("************* restFulPost ***********");
+    public @ResponseBody Contact restFulPost(@RequestBody Contact contact, HttpServletRequest request) {
+        
+        System.out.println("************* RESTful Post ***********");
+        String contentType = request.getContentType();   
+        System.out.println("************* contentType ***********:" + contentType);
         System.out.println(contact);
         contact.setEmailAddress("a@b.com");
         return contact;
